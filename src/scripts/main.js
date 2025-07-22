@@ -8,6 +8,10 @@ const table = document.querySelector('table');
 const tableBody = table.tBodies[0];
 
 appendRow.addEventListener('click', () => {
+  if (tableBody.rows.length >= 10) {
+    return;
+  }
+
   const rows = [...tableBody.children];
   const cells = rows[0].cells;
   const newRow = document.createElement('tr');
@@ -28,6 +32,10 @@ appendRow.addEventListener('click', () => {
 });
 
 removeRow.addEventListener('click', () => {
+  if (tableBody.rows.length < 3) {
+    return;
+  }
+
   const rows = [...tableBody.children];
 
   rows[rows.length - 1].remove();
@@ -40,6 +48,10 @@ removeRow.addEventListener('click', () => {
 });
 
 appendColumn.addEventListener('click', () => {
+  if (tableBody.rows[0].cells.length >= 10) {
+    return;
+  }
+
   const rows = [...tableBody.children];
 
   for (let i = 0; i < rows.length; i += 1) {
@@ -57,6 +69,10 @@ appendColumn.addEventListener('click', () => {
 });
 
 removeColumn.addEventListener('click', () => {
+  if (tableBody.rows[0].cells.length < 3) {
+    return;
+  }
+
   const rows = [...tableBody.children];
 
   for (let i = 0; i < rows.length; i += 1) {
